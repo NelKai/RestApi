@@ -4,7 +4,7 @@ app.set("view engine", "ejs"); // Otetaan ejs käyttöön
 const PORT = process.env.PORT || 3000; // Määritellään portti
 
 var mongoose = require("mongoose"); // Otetaan mongoose käyttöön tietokantakutsuja varten
-var uri = "mongodb+srv://Nelli:Admin1@cluster0.tq8uc.mongodb.net/LeffaAPI";
+const uri = process.env_DB_URI;
 
 // Luodaan yhteys tietokantaan
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
