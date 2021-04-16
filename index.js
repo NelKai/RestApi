@@ -35,7 +35,7 @@ app.get("/", function(request, response) {
 app.get("/api/getall", function(request, response) {
     Leffa.find({}, function(err, results) {
 
-        if(err) {
+        if(err) { // Käsitellään mahdolliset virhetilanteet
             console.log(err);
             response.json("Tulostamisessa tapahtui virhe.", 500);
 
