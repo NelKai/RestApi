@@ -11,7 +11,7 @@ const uri = process.env_DB_URI;
 // Luodaan yhteys tietokantaan
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
-// Luodaan malli, jossa tietokannan tieto esiintyy
+// Luodaan tietomalli
 const Leffa = mongoose.model(
     "Leffa",
     {
@@ -79,13 +79,17 @@ app.put("/api/update/:id", function(request, response) {
 
     var id = request.params.id;
 
-    Leffa.findByIdAndUpdate(id, {nimi: "Vaihdettu nimi"}, function(err, results) {
-        
+    var query = {_id: id};
+    var uusiNimi = {nimi: "Vaihdettu nimi"};
+
+    var options = {new: true};
+
+    Leffa.findOneAndUpdate(query, uusiNimi, options, function(err, results) {
         if(err) {
             console.log(err);
-            response.json("Elokuvan tietojen muuttaminen ei onnistunut.", 500)
+            response.json("Elokuvan tietojen muuttaminen ei onnistunut.", 500);
         } else {
-            response.json("Muutettu id:llä " + id + " elokuva: " + results);
+            response.json("Elokuvan nimi muutettu: " + results);
         }
     });
 });
