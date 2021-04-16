@@ -1,5 +1,7 @@
 var express = require("express"); // Otetaan express käyttöön
 var app = express();
+var cors = require("cors"); // Otetaan cors käyttöön
+app.use(cors());
 app.set("view engine", "ejs"); // Otetaan ejs käyttöön
 const PORT = process.env.PORT || 3000; // Määritellään portti
 
