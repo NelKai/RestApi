@@ -37,13 +37,16 @@ app.get("/", function(request, response) {
 app.get("/api/getall", function(request, response) {
     Leffa.find({}, function(err, results) {
 
+        /*
         if(err) { // Käsitellään mahdolliset virhetilanteet
             console.log(err);
             response.send("Tulostamisessa tapahtui virhe.", 500);
 
         } else {
+
+        */
             response.json(results, 200);
-        }
+        //}
     });
 });
 
