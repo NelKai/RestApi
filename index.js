@@ -39,7 +39,7 @@ app.get("/api/getall", function(request, response) {
 
         if(err) { // Käsitellään mahdolliset virhetilanteet
             console.log(err);
-            response.send("Tulostamisessa tapahtui virhe.");
+            response.send("Tulostamisessa tapahtui virhe.", 500);
 
         } else {
             response.json(results, 200);
