@@ -57,7 +57,7 @@ app.get("/api/:id", function(request, response) {
 
         if(err) {
             console.log(err);
-            response.json("Elokuvan tulostaminen ei onnistunut.", 500);
+            response.send("Elokuvan tulostaminen ei onnistunut.", 500);
         } else {
             response.json("Tulostetaan id:llä " + id + " " + results.nimi, 200);
         }
@@ -87,7 +87,7 @@ app.put("/api/update/:id", function(request, response) {
     Leffa.findOneAndUpdate(query, uusiNimi, options, function(err, results) {
         if(err) {
             console.log(err);
-            response.json("Elokuvan tietojen muuttaminen ei onnistunut.", 500);
+            response.send("Elokuvan tietojen muuttaminen ei onnistunut.", 500);
         } else {
             response.json("Elokuvan nimi muutettu: " + results);
         }
@@ -104,9 +104,9 @@ app.delete("/api/delete/:id", function(request, response) {
 
         if(err) {
             console.log(err);
-            response.json("Elokuvan poistaminen ei onnistunut.", 500);
+            response.send("Elokuvan poistaminen ei onnistunut.", 500);
         } else if(results == null) {
-            response.json("Tuloksia ei löytynyt.", 200);
+            response.send("Tuloksia ei löytynyt.", 200);
         } else {
             console.log(results);
             response.json("Poistettu id:llä " + id + " " + results.nimi, 200);
